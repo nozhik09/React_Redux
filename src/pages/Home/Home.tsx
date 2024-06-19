@@ -24,8 +24,15 @@ const  dispatch =useAppDispatch()
       },
 
 
-        onSubmit:(values)=>{dispatch(usersSliceActions.addUser({...values, id: v4()}))}
+        onSubmit:(values , helpers)=> {
+            if (!!values.fullName && (!!values.age) && !!values.jobTitle) {
+                dispatch(usersSliceActions.addUser({...values, id: v4()}))
+                helpers.resetForm()
+            } else {
+                alert('Please fill in all the facts')
+            }
 
+        }
 
 
     })

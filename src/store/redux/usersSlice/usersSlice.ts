@@ -21,9 +21,12 @@ export const usersSlice = createAppSlice({
 
         addUser:create.reducer((state:UsersSliceState,action:PayloadAction<UserData>)=>{
 state.users= [...state.users,action.payload]}),
-        deleteUser:create.reducer((state:UsersSliceState,action:PayloadAction<string[]>)=>{
+        deleteAllUser:create.reducer((state:UsersSliceState, action:PayloadAction<string[]>)=>{
             state.users=[ ]
-        })
+        }),
+        deleteUser:create.reducer((state:UsersSliceState,action:PayloadAction<string>)=>{
+state.users=state.users.filter((user) =>
+    user.id !== action.payload)})
 
 
 

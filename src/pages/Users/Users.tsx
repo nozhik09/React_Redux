@@ -19,15 +19,15 @@ function Users() {
                 <Paragraph>{user.fullName}</Paragraph>
                 <Paragraph>{user.age}</Paragraph>
                 <Paragraph>{user.jobTitle}</Paragraph>
+                <Button name='delete' onClick={()=>{dispatch(usersSliceActions.deleteUser(user.id))}}/>
             </UserCard>
-
         )
 
 
     })
 
-    const deleteUsers = () => {
-        dispatch(usersSliceActions.deleteUser([]))
+    const deleteAllUsers = () => {
+        dispatch(usersSliceActions.deleteAllUser([]))
 
 
     }
@@ -39,7 +39,7 @@ function Users() {
 
 
             {usersCards}
-            {usersShow && (<Button name="DeleteAllUsers" onClick={deleteUsers}/>)}
+            {usersShow && (<Button name="DeleteAllUsers" onClick={deleteAllUsers}/>)}
         </UsersPageWrapper>
 
 

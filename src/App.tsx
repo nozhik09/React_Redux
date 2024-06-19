@@ -5,24 +5,26 @@ import Home from "./pages/Home/Home";
 import Users from "./pages/Users/Users";
 import HomeWork15 from "./HomeWorks/HomeWork15";
 import Layout2 from "./pages/Layout2/Layout2";
+import Lesson17 from "./lessons/Lesson17/Lesson17";
 
 
 const App = () => {
     return (
         <BrowserRouter>
-            {/*<Lesson15/>*/}
-            <Layout2>
-                <Routes>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/users' element={<Users/>}/>
-                    <Route path='*' element={'Page not found'}/>
-                </Routes>
+            {/*/!*<Lesson15/>*!/*/}
+            {/*<Layout2>*/}
+            {/*    <Routes>*/}
+            {/*        <Route path='/' element={<Home/>}/>*/}
+            {/*        <Route path='/users' element={<Users/>}/>*/}
+            {/*        <Route path='*' element={'Page not found'}/>*/}
+            {/*    </Routes>*/}
 
 
-            </Layout2>
+            {/*</Layout2>*/}
 
 
             {/*<HomeWork15/>*/}
+            <Lesson17/>
 
 
         </BrowserRouter>
