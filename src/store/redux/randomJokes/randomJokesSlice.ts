@@ -56,8 +56,7 @@ export const randomJokesSlice = createAppSlice({
                     state.status = 'error'
                     state.error = action.payload
                 }
-            }
-        )
+            })
     }),
     selectors: {
         jokeData: (state: RandomJokesSliceState) => state

@@ -6,6 +6,7 @@ import Users from "./pages/Users/Users";
 import HomeWork15 from "./HomeWorks/HomeWork15";
 import Layout2 from "./pages/Layout2/Layout2";
 import Lesson17 from "./lessons/Lesson17/Lesson17";
+import WeatherApp from "./components/WeatherApp/WeatherApp";
 
 
 const App = () => {
@@ -24,8 +25,8 @@ const App = () => {
 
 
             {/*<HomeWork15/>*/}
-            <Lesson17/>
-
+            {/*<Lesson17/>*/}
+            <WeatherApp/>
 
         </BrowserRouter>
     )
