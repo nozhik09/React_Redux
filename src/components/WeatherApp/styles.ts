@@ -59,10 +59,11 @@ export const CityName = styled.div`
 `;
 
 export const WeatherData = styled.div`
-  grid-area: weatherData; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 10px;
+    grid-area: weatherData;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   
 `;
 
 

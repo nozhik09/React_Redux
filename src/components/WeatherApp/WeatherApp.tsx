@@ -49,11 +49,15 @@ function WeatherApp() {
             <WeatherBoxInfo>
                 {status === 'loading' && <Spinner/>}
 
-                {status==='success' && <WeatherDataCity>
+                {status === 'success' && <WeatherDataCity>
                     <WeatherData>
                         Температура: {data?.temperature}
-                        Страна: {data?.countries}
-                       Временная зона: {data?.timezones}
+                        <WeatherData>
+                            Страна: {data?.countries}
+                        </WeatherData>
+                        <WeatherData>
+                            Временная зона: {data?.timezones}
+                        </WeatherData>
                     </WeatherData>
                     <CityName>
                         {city}
