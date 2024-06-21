@@ -1,5 +1,6 @@
 import {createAppSlice} from "../../createAppSlice";
 import type {WeatherAppData, WeatherAppSliceState} from "./types";
+import axios from "axios";
 
 
 const APP_ID = '9de57e16f9a4550e44e9fe4f405218a7'
@@ -20,13 +21,12 @@ export const weatherAppSlice = createAppSlice({
 
 
 
-        fetchWeather: create.asyncThunk(async (citeName:string, thunkApi) => {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citeName}&appid=${APP_ID}&units=metric&lang=ua`)
-            const result = await response.json()
-            if (!response.ok){
-                thunkApi.rejectWithValue(result)
-            }else {
-                return result
+        fetchWeather: create.asyncThunk(async (citeName:string, thunkAPI) => {
+            try {
+                const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${citeName}&appid=${APP_ID}&units=metric`);
+                return response.data;
+            } catch (error) {
+                return thunkAPI.rejectWithValue(error);
             }
 
         }, {

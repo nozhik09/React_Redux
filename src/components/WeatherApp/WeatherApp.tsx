@@ -5,7 +5,7 @@ import {
 } from "../../store/redux/weatherApp/weatherAppSlice";
 import {
     AddImage,
-    CityName,
+    CityName, ErrorData,
     SearchContainer,
     WeatherBoxInfo,
     WeatherData,
@@ -64,7 +64,7 @@ function WeatherApp() {
                     </WeatherData>
 
                 </WeatherDataCity>}
-                {status === 'error' && error }
+                {status === 'error' && error && <ErrorData>ERROR</ErrorData>}
 
                 <AddImage src={`https://openweathermap.org/img/wn/${data?.icons}.png`}/>
 
