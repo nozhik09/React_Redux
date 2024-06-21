@@ -68,8 +68,9 @@ export const WeatherData = styled.div`
 
 
 export const AddImage = styled.img`
-    height: 50px;
-    width: 170px;
+    max-height: 200px;
+    max-width: 200px;
+    grid-area: weatherData;
     
 `
 

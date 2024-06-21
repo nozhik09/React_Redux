@@ -1,8 +1,9 @@
 export interface WeatherAppData {
-    temperature: string,
+    temperature: number,
     names: string,
-    countries: string,
-    timezones:string
+    feelsLikes: number,
+    descriptions:string
+    icons:string
 }
 
 

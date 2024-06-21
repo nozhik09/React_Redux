@@ -5,7 +5,7 @@ import {
 } from "../../store/redux/weatherApp/weatherAppSlice";
 import {
     AddImage,
-    CityName, ErrorData,
+    CityName,
     SearchContainer,
     WeatherBoxInfo,
     WeatherData,
@@ -41,8 +41,8 @@ function WeatherApp() {
             <WeatherTitle>Weather</WeatherTitle>
 
             <SearchContainer>
-                <Input name='Your City' placeholder='Your City' onChange={(event) => setCityName(event.target.value)}/>
-                <Button name='Get Weather' onClick={getWeathers}/>
+                <Input name='Your City' placeholder='Введіть ваше місто' onChange={(event) => setCityName(event.target.value)}/>
+                <Button name='Отримати погоду' onClick={getWeathers}/>
             </SearchContainer>
 
 
@@ -50,29 +50,27 @@ function WeatherApp() {
                 {status === 'loading' && <Spinner/>}
 
                 {status === 'success' && <WeatherDataCity>
+                    <CityName>
+                       Місто: {city}
+                    </CityName>
                     <WeatherData>
-                        Температура: {data?.temperature}
+                        Температура: {data?.temperature}°C
                         <WeatherData>
-                            Страна: {data?.countries}
+                            Відчуваеться як : {data?.feelsLikes}°C
                         </WeatherData>
                         <WeatherData>
-                            Временная зона: {data?.timezones}
+                            Опис погоди: {data?.descriptions}
                         </WeatherData>
                     </WeatherData>
-                    <CityName>
-                        {city}
-                    </CityName>
+
                 </WeatherDataCity>}
-                <AddImage
-                    src='https://s3-alpha-sig.figma.com/img/876e/dcf3/34c1662b5278253a69ea033623646204?Expires=1719187200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DCn9rl2JrVpj9hbV4TZRtjR0knD1PLxCWiSb3SFECps7xARpAImkqwewQFcU7SuR5vEJFyj1-~FbOKXjWVUdyU784ewVpV10FW5tZn-m0OnW5ly4~rmnceBypZ5Vpabn4y5v9L7LY8euatAxIzF69fHIEJdAteUnWS1vj2~nKM3EYQ33pG528g5hcduypWvAnClWSKjWUjfzErRyVNm8kwXclGuhMAfkyfobzdC8E0qCy0r9tLFuUJLdj4VGs7zXcTZxc5~HTz6KYiMPyNzkKVFj~AOfSslfZguzImEyQ4BmfM3Vv0fzV~aXUG-HOfSyA45V2Rn~P9kzrpOgzoh2sQ__'/>
+                {status === 'error' && error }
+
+                <AddImage src={`https://openweathermap.org/img/wn/${data?.icons}.png`}/>
+
+
             </WeatherBoxInfo>
-
         </WeatherInfoWrapper>
-
-
     )
-
-
 }
-
 export default WeatherApp

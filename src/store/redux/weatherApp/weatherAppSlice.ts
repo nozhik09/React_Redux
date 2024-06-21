@@ -21,7 +21,7 @@ export const weatherAppSlice = createAppSlice({
 
 
         fetchWeather: create.asyncThunk(async (citeName:string, thunkApi) => {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citeName}&appid=${APP_ID}`)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citeName}&appid=${APP_ID}&units=metric&lang=ua`)
             const result = await response.json()
             if (!response.ok){
                 thunkApi.rejectWithValue(result)
@@ -36,11 +36,13 @@ export const weatherAppSlice = createAppSlice({
             },
             fulfilled:(state:WeatherAppSliceState ,action:any) =>{
                 state.status='success'
+                const {main:{temp,feels_like},weather:[{description,icon}],name}=action.payload
                 state.data= {
-                    temperature: action.payload.main.temp,
-                    names: action.payload.name,
-                    countries:action.payload.sys.country,
-                    timezones:action.payload.timezone
+                    temperature:temp,
+                    names: name,
+                    feelsLikes:feels_like,
+                    descriptions:description,
+                    icons:icon
                 }
             },
             rejected:(state:WeatherAppSliceState,action:any)=>{
